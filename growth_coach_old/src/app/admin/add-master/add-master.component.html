@@ -1,0 +1,154 @@
+<p>request-coach works!</p>
+<div class="wrapper ">
+    <app-sidebar></app-sidebar>
+     <div class="main-panel">
+       <!-- Navbar -->
+       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+         <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+           <div class="collapse navbar-collapse justify-content-end">
+          
+             <ul class="navbar-nav">
+              
+               <li class="nav-item dropdown">
+                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <i class="material-icons">notifications</i>
+                 
+                 </a>
+               
+               </li>
+               <div class="dropdown">
+                 <button class="dropbtn">{{currentUser}}</button>
+                 <div class="dropdown-content">
+                 <a href="#">Logout</a>
+               
+                 </div>
+               </div>
+             </ul>
+           </div>
+         </div>
+       </nav>
+       <div class="content">
+         <div class="add_list_par">
+        <div class="container-fluid">
+         <div class="row">
+         <div class="col-sm-12"><h5 class="heading_list"> Add Master </h5></div>
+        
+         </div>
+
+
+
+         <form [formGroup]="addMaster" (ngSubmit)="addMasterForm()" >
+           <div class="row">
+             <div class="col-sm-6">
+              <div class="group_input">
+                <label class="for_label">Name</label>
+                <i class="fa fa-star"></i>
+                <input type="text" formControlName="firstName" placeholder="Enter your name" class="form-control">
+             </div>
+             </div>
+             <div class="col-sm-6">
+              <div class="group_input">
+                <label class="for_label">Middle Name</label>   <i class="fa fa-star"></i>
+                <input type="text" formControlName="midName" placeholder="Enter your middle name (if any)" class="form-control">
+                </div>
+             </div>
+             <div class="col-sm-6"> <div class="group_input">
+              <label class="for_label">Last Name</label>  <i class="fa fa-star"></i>
+              <input type="text" formControlName="lastName" placeholder="Enter your last name or title" class="form-control">
+          </div></div>
+            <div class="col-sm-6">
+              <div class="group_input">
+              <label class="for_label">Email</label>   <i class="fa fa-star"></i>
+              <input type="text" formControlName="email" placeholder="Enter your Email" class="form-control">
+             </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="group_input">
+                <label class="for_label">Phone No</label>   <i class="fa fa-star"></i>
+                <input type="text" formControlName="phone" placeholder="Enter your Phone" class="form-control">
+               </div>
+              </div>
+     
+             <div class="col-sm-6">
+              <div class="group_input">
+              <label class="for_label">Password</label>   <i class="fa fa-star"></i>
+              <input type="text" formControlName="password" placeholder="Enter your Password" class="form-control">
+             </div></div>
+             <div class="col-sm-6"><div class="group_input"><label class="for_label">Pin Code</label>  <i class="fa fa-star"></i>
+              <input type="text" formControlName="pinCode" placeholder="Enter your Pincode" class="form-control">
+            </div></div>
+             <div class="col-sm-6">
+              <div class="group_input">
+                <label class="for_label">Gender Details</label> <i class="fa fa-star"></i><br>
+                <mat-radio-group aria-label="Select an option" formControlName="gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                    <mat-radio-button value="other">Other</mat-radio-button>
+                  </mat-radio-group>
+                  
+            </div> 
+             </div>
+             <div class="col-sm-6"><label class="for_label">Payment Plan</label> <i class="fa fa-star"></i>
+              <select class="form-control" placeholder="planType" formControlName="planType">
+                <option>trtyy</option>
+            </select>
+            </div>
+             <div class="col-sm-6"> <label class="for_label">Select State</label><i class="fa fa-star"></i>
+              <select class="form-control" placeholder="State" formControlName="state" (change)="getCityOfState($event)">
+                <option  *ngFor="let s of states" value="{{s.id}}">{{s.stateName}}</option>
+            </select>
+            </div>
+         
+             <div class="col-sm-6"><label class="for_label">Select City</label>    
+              <i class="fa fa-star"></i>
+              <select class="form-control" placeholder="City" formControlName="city">
+                <option  *ngFor="let c of cityList" value="{{c.id}}">{{c.cityName}}</option>
+            </select></div>
+             <div class="col-sm-6"><div class="group_input"><label class="for_label">Date of Birth</label>  <i class="fa fa-star"></i>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" formControlName="DOB">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+             
+
+            </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="group_input">
+              <label class="for_label">Uplaod Image</label> <i class="fa fa-star"></i>
+            
+                <input type="file" name="file" class="form-control" (change)="onFileSelect($event)"/>
+ 
+           
+            </div>
+            </div>
+           </div>
+         
+
+         
+         <div class="group_input">
+             <label class="for_label">Address</label>   <i class="fa fa-star"></i>
+            <textarea  formControlName="address" placeholder="Address" class="form-control"></textarea>
+          </div><br>
+         
+         <div class="group_input" style="text-align: center;">
+             <button type="submit" class=btn_reg>Add List</button>
+          </div>
+
+      </form>
+      
+    </div>
+       
+      </div>
+      </div>
+       <!-- End Navbar -->

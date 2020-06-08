@@ -1,0 +1,110 @@
+<div class="wrapper ">
+    <app-sidebar></app-sidebar>
+     <div class="main-panel">
+       <!-- Navbar -->
+       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+         <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+           <div class="collapse navbar-collapse justify-content-end">
+          
+             <ul class="navbar-nav">
+              
+               <li class="nav-item dropdown">
+                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <i class="material-icons">notifications</i>
+                 
+                 </a>
+               
+               </li>
+               <div class="dropdown">
+                 <button class="dropbtn">{{currentUser}}</button>
+                 <div class="dropdown-content">
+                 <a href="" (click)="logout()">Logout</a>
+               
+                 </div>
+               </div>
+             </ul>
+           </div>
+         </div>
+       </nav>
+       <!-- End Navbar -->
+       <div class="content">
+         <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+  
+  
+  
+              <div class="number_box">
+               <h4>NUMBER OF TRAININGS</h4>
+               <h4>{{countTraining}}</h4>
+              </div> 
+              <img src="assets/images/graph.jpg" class="img-fluid">  
+              <img src="assets/images/graph1.jpg" class="img-fluid">  
+           </div>
+            <div class="col-sm-6">
+             <div class="number_box">
+              <div class="row">
+                <div class="col-sm-6">  <h4>NUMBER OF PARTICIPANTS</h4></div>
+                <div class="col-sm-6">  <h4>{{countParticipant}}</h4></div>
+              </div>
+   
+              </div>
+              <div class="number_box">
+                <div class="row">
+                  <div class="col-sm-6"><h4>NUMBER OF MASTER FRANCHISE</h4></div>
+                  <div class="col-sm-6">  <h4>{{countMaster}}</h4></div>
+                </div>
+                
+              
+                </div>
+                <div class="number_box">
+                  <div class="row">
+                    <div class="col-sm-6">   <h4>NUMBER OF OPERATIONAL FRANCHISE</h4></div>
+                    <div class="col-sm-6"> 
+                      <h4>{{countOperational}}</h4></div>
+                  </div>
+               
+                  </div>
+                  <div class="number_box">
+                    <div class="row">
+                      <div class="col-sm-6">  <h4>NUMBER OF INVESMENT FRANCHISE</h4></div>
+                      <div class="col-sm-6"> 
+                        <h4>{{countInvestor}}</h4></div>
+                    </div>
+              
+                    </div>
+                    <div class="number_box">
+                      <div class="row">
+                        <div class="col-sm-6"> <h4>NUMBER OF REFERRAL FRANCHISE</h4></div>
+                        <div class="col-sm-6"> 
+                          <h4>{{countReferal}}</h4></div>
+                      </div>
+  
+                      </div>
+             </div>
+          </div>
+       </div>
+       </div>
+       <footer class="footer">
+         <div class="container-fluid">
+          
+           <div class="copyright">
+            Copyright © 2020  <a href="#" target="_blank">The Growth Coach</a> - All Rights Reserved<br>
+            Powered by Attractive.Media
+         
+           </div>
+         </div>
+       </footer>
+     </div>
+   </div>
+   
+  

@@ -1,0 +1,89 @@
+<p>request-coach works!</p>
+<div class="wrapper ">
+    <app-sidebar></app-sidebar>
+     <div class="main-panel">
+       <!-- Navbar -->
+       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+         <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+           <div class="collapse navbar-collapse justify-content-end">
+          
+             <ul class="navbar-nav">
+              
+               <li class="nav-item dropdown">
+                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <i class="material-icons">notifications</i>
+                 
+                 </a>
+               
+               </li>
+               <div class="dropdown">
+                 <button class="dropbtn">{{currentUser}}</button>
+                 <div class="dropdown-content">
+                 <a href="#">Logout</a>
+               
+                 </div>
+               </div>
+             </ul>
+           </div>
+         </div>
+       </nav>
+       <div class="content">
+        <div class="container-fluid">
+         <div class="row">
+         <div class="col-sm-6"><h5 class="heading_list"> LIST OF COACHES </h5></div>
+         <div class="col-sm-6">
+          <form>
+            <div class="input-group">
+              <input type="text"  [(ngModel)]="searchText" class="form-control" placeholder="Search by area/city" name="search">
+            <i class="fa fa-search input_search"></i>
+            </div>
+          </form>
+         </div>
+         </div>
+
+         <table class="table">
+          <thead>
+            <tr>
+              <th>S.NO.</th>
+              <th>Operational Frenchise Name</th>
+              <th>Place</th>
+              <th>No. of Training Conducted</th>
+              <th>View Details</th>
+
+            </tr>
+          </thead>
+          <tbody *ngIf="result?.length > 0">
+            <tr *ngFor="let d of allData | filter : searchText:['firstName','midName','lastName','address'] ;let i=index">
+              <td>{{i+1}}</td>
+              <td>{{d.firstName}} {{d.midName}} {{d.lastName}}</td>
+              <td>{{d.address}}</td>
+              <td>{{d.trainings}}</td>
+              <td><button class="veiw_butt">View More</button></td>
+     
+            
+            </tr>
+      
+          
+          
+          </tbody>
+          <tbody *ngIf="!result?.length > 0">
+            <tr>
+              <td colspan="5">No Data Found</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="card-footer pb-0 pt-3">
+          <jw-pagination [items]="result" (changePage)="onChangePage($event)"></jw-pagination>
+        </div>
+      </div>
+      </div>
+       <!-- End Navbar -->

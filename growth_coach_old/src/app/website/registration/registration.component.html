@@ -1,0 +1,449 @@
+<app-header></app-header>
+<div class="reg-page">
+ <div class="container">
+    <div class="reg-page-form">
+        <h2>Registration as a</h2> 
+            <div id="accordion" class="accordion">
+            <div class="card mb-0">
+                <div class="collapsed"  data-toggle="collapse" href="#collapseOne">
+                    <a class="card-title">
+                    <h2  class="reg-type">MASTER FRENCHISE</h2>
+                    </a>
+                </div>
+                <div id="collapseOne" class="card-body collapse" data-parent="#accordion" >
+                    <form [formGroup]="masterForm" (ngSubmit)="formSubmit('masterForm')" >
+                     <div class="group_input">
+                        <label class="for_label">Name</label>
+                        <i class="fa fa-star"></i>
+                        <input type="text" formControlName="firstName" placeholder="Enter your name" class="form-control">
+                     </div>
+                     <div class="group_input">
+                     <label class="for_label">Middle Name</label>   <i class="fa fa-star"></i>
+                     <input type="text" formControlName="midName" placeholder="Enter your middle name (if any)" class="form-control">
+                     </div>
+                     <div class="group_input">
+                        <label class="for_label">Last Name</label>  <i class="fa fa-star"></i>
+                        <input type="text" formControlName="lastName" placeholder="Enter your last name or title" class="form-control">
+                    </div>
+                    <div class="group_input">
+                        <label class="for_label">Gender Details</label> <i class="fa fa-star"></i><br>
+                        <mat-radio-group aria-label="Select an option" formControlName="gender">
+                            <mat-radio-button value="male">Male</mat-radio-button>
+                            <mat-radio-button value="female">Female</mat-radio-button>
+                            <mat-radio-button value="other">Other</mat-radio-button>
+                          </mat-radio-group>
+                          
+                    </div> 
+                    <div class="row">
+                        <div class="col-3"><label class="for_label">Date of Birth</label>  <i class="fa fa-star"></i></div>
+                        <div class="col-9">
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="picker" formControlName="DOB">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                              
+                              
+                          </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-3"><label class="for_label">Phone No</label>  <i class="fa fa-star"></i></div>
+                        <div class="col-9"> <input type="text" formControlName="phone" placeholder="Enter your phone" class="form-control"></div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-3"><label class="for_label">Email</label>   <i class="fa fa-star"></i></div>
+                        <div class="col-9"> <input type="text" formControlName="email" placeholder="Enter your Email" class="form-control"></div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-3"><label class="for_label">Password</label>   <i class="fa fa-star"></i></div>
+                        <div class="col-9"> <input type="text" formControlName="password" placeholder="Enter your Password" class="form-control"></div>
+                    </div><br>
+                    <div class="group_input">
+                        <label class="for_label">Address</label>   <i class="fa fa-star"></i>
+                       <textarea  formControlName="address" placeholder="Address" class="form-control"></textarea>
+                     </div><br>
+                     <div class="row">
+                        <div class="col-3">
+                            <label class="for_label">Select State</label><i class="fa fa-star"></i>
+                        </div>
+                        <div class="col-9">
+                            <select class="form-control" placeholder="State" formControlName="state" (change)="getCityOfState($event)">
+                                <option  *ngFor="let s of states" value="{{s.id}}">{{s.stateName}}</option>
+                            </select>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-3"><label class="for_label">Select City</label>    
+                            <i class="fa fa-star"></i></div>
+                        <div class="col-9">
+                            <select class="form-control" placeholder="City" formControlName="city">
+                                <option  *ngFor="let c of cityList" value="{{c.id}}">{{c.cityName}}</option>
+                            </select>
+                    </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-3"><label class="for_label">Pin Code</label>  <i class="fa fa-star"></i></div>
+                        <div class="col-9"> <input type="text" formControlName="pinCode" placeholder="Enter your Pincode" class="form-control"></div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-3"><label class="for_label">Payment Plan</label> <i class="fa fa-star"></i></div>
+                        <div class="col-9">
+                            <select class="form-control" placeholder="planType" formControlName="planType">
+                                <option  *ngFor="let p of planTypes" value="{{p.id}}">{{p.typeName}}</option>
+                            </select>
+                    </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3"><label class="for_label">Uplaod Image</label> <i class="fa fa-star"></i></div>
+                      
+                        <div class="col-md-9">
+                          <label class="for_label" name="upload">
+                                        <input type="file" name="file" (change)="onFileSelect($event)"/>
+                                        Uplaod Image
+                                    </label>
+                           
+                        </div>
+                    </div>
+                    <div class="group_input" style="text-align: center;">
+                        <button type="submit" class=btn_reg>Registration As Master</button>
+                     </div>
+ 
+                 </form>
+                </div>
+
+
+<!-----------Operational Frenchise Form ------>
+
+
+<div class="collapsed"  data-toggle="collapse" href="#collapsetwo">
+    <a class="card-title">
+        <h2 class="reg-type">OPRETIONAL FRENCHISE</h2>
+    </a>
+</div>
+<div id="collapsetwo" class="card-body collapse" data-parent="#accordion" >
+    <form [formGroup]="operationalForm" (ngSubmit)="formSubmit('operationalForm')">
+     <div class="group_input">
+        <label class="for_label">First Name</label>
+        <i class="fa fa-star"></i>
+        <input type="text" placeholder="Enter your name" class="form-control" formControlName="firstName">
+     </div>
+     <div class="group_input">
+        <label class="for_label">Middle Name</label>   <i class="fa fa-star"></i>
+        <input type="text" placeholder="Enter your middle name (if any)" class="form-control" formControlName="midName">
+     </div>
+     <div class="group_input">
+        <label class="for_label">Last Name</label>  <i class="fa fa-star"></i>
+        <input type="text" placeholder="Enter your last name or title" class="form-control" formControlName="lastName">
+    </div>
+    <div class="group_input">
+        <label class="for_label">Gender Details</label><i class="fa fa-star"></i><br>
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="other">Other</mat-radio-button>
+        </mat-radio-group>
+    </div> 
+    <div class="row">
+        <div class="col-3"><label class="for_label">Date of Birth</label> <i class="fa fa-star"></i></div>
+        <div class="col-9">       
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker1" formControlName="DOB">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Phone No</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" placeholder="Enter your phone" class="form-control" formControlName="phone"></div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Email</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" placeholder="Enter your Email" class="form-control" formControlName="email"></div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Password</label>   <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" formControlName="password" placeholder="Enter your Password" class="form-control"></div>
+    </div><br>
+    <div class="group_input">
+        <label class="for_label">Address</label>   <i class="fa fa-star"></i>
+       <textarea  placeholder="Address" class="form-control" formControlName="address"></textarea>
+     </div><br>
+     <div class="row">
+        <div class="col-3"><label class="for_label">Select State</label>   <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="State" formControlName="state" (change)="getCityOfState($event)">
+                <option  *ngFor="let s of states" value="{{s.id}}">{{s.stateName}}</option>
+            </select>
+    </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Select City</label>    <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="City" formControlName="city">
+                <option  *ngFor="let c of cityList" value="{{c.id}}">{{c.cityName}}</option>
+            </select>
+    </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Pin Code</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" formControlName="pinCode" placeholder="Enter your Pincode" class="form-control"></div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Select Courses</label> <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="Courses" formControlName="courses">
+                <option  *ngFor="let cr of courses" value="{{cr.id}}">{{cr.courseName}}</option>
+            </select>
+        </div>
+    </div><br/>
+  
+ 
+    <div class="row">
+        <div class="col-3"><label class="for_label">Uplaod Image</label> <i class="fa fa-star"></i></div>
+      
+        <div class="col-md-9">
+          <label class="for_label" name="upload">
+                        <input type="file" name="file" (change)="onFileSelect($event)"/>
+                        Uplaod Image
+                    </label>
+           
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="col-3"><label class="for_label">Payment Plan</label> <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="planType" formControlName="planType">
+                <option  *ngFor="let p of planTypes" value="{{p.id}}">{{p.typeName}}</option>
+            </select>
+    </div>
+    </div>
+    <div class="group_input" style="text-align: center;">
+        <button type="submit" class=btn_reg>Registration As Operational</button>
+     </div>
+
+ </form>
+</div>
+
+<!---------Referal Frenchise form---------->
+
+<div class="collapsed"  data-toggle="collapse" href="#collapsethird">
+    <a class="card-title">
+        <h2  class="reg-type">REFERRAL FRENCHISE</h2>
+    </a>
+</div>
+<div id="collapsethird" class="card-body collapse" data-parent="#accordion" >
+    <form [formGroup]="referalForm" (ngSubmit)="formSubmit('referalForm')" >
+     <div class="group_input">
+        <label class="for_label">First Name</label>
+        <i class="fa fa-star"></i>
+        <input type="text" placeholder="Enter your name" class="form-control" formControlName="firstName">
+     </div>
+     <div class="group_input">
+     <label class="for_label">Middle Name</label>   <i class="fa fa-star"></i>
+     <input type="text" placeholder="Enter your middle name (if any)" class="form-control" formControlName="midName">
+     </div>
+     <div class="group_input">
+        <label class="for_label">Last Name</label>  <i class="fa fa-star"></i>
+        <input type="text" placeholder="Enter your last name or title" class="form-control" formControlName="lastName">
+    </div>
+    <div class="group_input">
+        <label class="for_label">Gender Details</label>   <i class="fa fa-star"></i><br>
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="other">Other</mat-radio-button>
+        </mat-radio-group>
+    </div> 
+    <div class="row">
+        <div class="col-3"><label class="for_label">Date of Birth</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9">         
+            <mat-form-field>
+                <input matInput [matDatepicker]="refPicker" formControlName="DOB">
+                <mat-datepicker-toggle matSuffix [for]="refPicker"></mat-datepicker-toggle>
+                <mat-datepicker #refPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Phone No</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" placeholder="Enter your phone" class="form-control" formControlName="phone"></div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Email</label>   <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" placeholder="Enter your Email" class="form-control" formControlName="email"></div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Password</label>   <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" formControlName="password" placeholder="Enter your Password" class="form-control"></div>
+    </div><br>
+    <div class="group_input">
+        <label class="for_label">Address</label>   <i class="fa fa-star"></i>
+       <textarea  placeholder="Address" class="form-control" formControlName="address"></textarea>
+     </div><br>
+     <div class="row">
+        <div class="col-3"><label class="for_label">Select State</label>   <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="State" formControlName="state" (change)="getCityOfState($event)">
+                <option  *ngFor="let s of states" value="{{s.id}}">{{s.stateName}}</option>
+            </select>
+    </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Select City</label>    <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="City" formControlName="city">
+                <option  *ngFor="let c of cityList" value="{{c.id}}">{{c.cityName}}</option>
+            </select>
+    </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-3"><label class="for_label">Pin Code</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" formControlName="pinCode" placeholder="Enter your Pincode" class="form-control"></div>
+    </div><br>
+ 
+    <div class="row">
+        <div class="col-3"><label class="for_label">Payment Plan</label> <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="planType" formControlName="planType">
+                <option  *ngFor="let p of planTypes" value="{{p.id}}">{{p.typeName}}</option>
+            </select>
+    </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-3"><label class="for_label">Uplaod Image</label> <i class="fa fa-star"></i></div>
+      
+        <div class="col-md-9">
+          <label class="for_label" name="upload">
+                        <input type="file" name="file" (change)="onFileSelect($event)"/>
+                        Uplaod Image
+                    </label>
+           
+        </div>
+    </div>
+    <div class="group_input" style="text-align: center;">
+        <button type="submit" class=btn_reg>Registration As Referral</button>
+     </div>
+
+ </form>
+</div>
+<!---------------investment frenchise--------------->
+
+<div class="collapsed"  data-toggle="collapse" href="#collapsefour">
+    <a class="card-title">
+        <h2  class="reg-type">INVESMENT FRENCHISE</h2>
+    </a>
+</div>
+<div id="collapsefour" class="card-body collapse" data-parent="#accordion" >
+    <form [formGroup]="investmentForm" (ngSubmit)="formSubmit('investmentForm')" >
+     <div class="group_input">
+        <label class="for_label">First Name</label>
+        <i class="fa fa-star"></i>
+        <input type="text" placeholder="Enter your name" class="form-control" formControlName="firstName">
+     </div>
+     <div class="group_input">
+     <label class="for_label">Middle Name</label>   <i class="fa fa-star"></i>
+     <input type="text" placeholder="Enter your middle name (if any)" class="form-control" formControlName="midName">
+     </div>
+     <div class="group_input">
+        <label class="for_label">Last Name</label>  <i class="fa fa-star"></i>
+        <input type="text" placeholder="Enter your last name or title" class="form-control"formControlName="lastName" >
+    </div>
+    <div class="group_input">
+        <label class="for_label">Gender Details</label>   <i class="fa fa-star"></i><br>
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="other">Other</mat-radio-button>
+        </mat-radio-group>
+    </div> 
+    <div class="row">
+        <div class="col-3"><label class="for_label">Date of Birth</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9"> 
+            <mat-form-field>
+                <input matInput [matDatepicker]="invPicker" formControlName="DOB">
+                <mat-datepicker-toggle matSuffix [for]="invPicker"></mat-datepicker-toggle>
+                <mat-datepicker #invPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Phone No</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" placeholder="Enter your phone" class="form-control" formControlName="phone"></div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Email</label>   <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" placeholder="Enter your Email" class="form-control" formControlName="email"></div>
+    </div><br>    
+    <div class="row">
+        <div class="col-3"><label class="for_label">Password</label>   <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" formControlName="password" placeholder="Enter your Password" class="form-control"></div>
+    </div><br>
+
+    <div class="group_input">
+        <label class="for_label">Address</label>   <i class="fa fa-star"></i>
+       <textarea  placeholder="Address" class="form-control" formControlName="address"></textarea>
+     </div><br>
+     <div class="row">
+        <div class="col-3"><label class="for_label">Select State</label>   <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="State" formControlName="state" (change)="getCityOfState($event)">
+                <option  *ngFor="let s of states" value="{{s.id}}">{{s.stateName}}</option>
+            </select>
+    </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Select City</label> <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="City" formControlName="city">
+                <option  *ngFor="let c of cityList" value="{{c.id}}">{{c.cityName}}</option>
+            </select>
+    </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Pin Code</label>  <i class="fa fa-star"></i></div>
+        <div class="col-9"> <input type="text" formControlName="pinCode" placeholder="Enter your Pincode" class="form-control"></div>
+    </div><br>
+    <div class="row">
+        <div class="col-12"><label class="for_label">Invesment that can afforded per traning</label> <i class="fa fa-star"></i></div>
+        <div class="col-12">
+          <input type="text" class="form-control" placeholder="Type in the amount that you will be Investing per traning session">
+    </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Payment Plan</label> <i class="fa fa-star"></i></div>
+        <div class="col-9">
+            <select class="form-control" placeholder="planType" formControlName="planType">
+                <option  *ngFor="let p of planTypes" value="{{p.id}}">{{p.typeName}}</option>
+            </select>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-3"><label class="for_label">Uplaod Image</label> <i class="fa fa-star"></i></div>
+      
+        <div class="col-md-9">
+          <label class="for_label" name="upload">
+                        <input type="file" name="file" (change)="onFileSelect($event)"/>
+                        Uplaod Image
+                    </label>
+           
+        </div>
+    </div>
+    <div class="group_input" style="text-align: center;">
+        <button type="submit" class=btn_reg>Registration As Invesment</button>
+    </div>
+
+ </form>
+</div>
+
+                </div>
+                </div>
+     </div>
+ </div>   
+</div>
+<app-footer></app-footer>
